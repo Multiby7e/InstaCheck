@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Threading;
+using InstaCheck.Checker;
 
 namespace InstaCheck //Created by Multibyte --- Hackforums.net
 {
@@ -18,6 +19,7 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
     {
         public static int nThreads = 25;
         public static bool Working = false;
+        public static string CheckerType = null;
 
         public static Thread[] MainThread = new Thread[1];
         public static Dictionary<int, int> ThreadStart = new Dictionary<int, int>();
@@ -65,12 +67,11 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            OpenFileDialog Ofd = new OpenFileDialog();
-            Ofd.Filter = "Text files|*.txt";
+            OpenFileDialog Ofd = new OpenFileDialog {Filter = "Text files|*.txt"};
             if (Ofd.ShowDialog() == DialogResult.OK)
             {
-                string[] Lines = File.ReadAllLines(Ofd.FileName);
-                foreach (string Line in Lines)
+                var Lines = File.ReadAllLines(Ofd.FileName);
+                foreach (var Line in Lines)
                 {
                     Usernames.Add(Line);
                 }
@@ -86,18 +87,29 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
 
         public void StartThreads(int nThreads = 1)
         {
-            for (int i = 0; i < nThreads; i++)
+            if (chk_twi.Checked)
             {
-                MainThread[i] = new Thread(() => MainMethod(i, listUsernames));
-                MainThread[i].Name = String.Format("Working Thread: {0}", i);
-                MainThread[i].IsBackground = true;
+                CheckerType = "Twitter";
+
+            }else if (chk_inst.Checked)
+            {
+                CheckerType = "Instagram";
+            }
+
+            for (var i = 0; i < nThreads; i++)
+            {
+                MainThread[i] = new Thread(() => MainMethod(i, listUsernames, CheckerType))
+                {
+                    Name = String.Format("Working Thread: {0}", i),
+                    IsBackground = true
+                };
                 MainThread[i].Start();
             }
         }
 
         public static void StopThreads()
         {
-            foreach (Thread Thread in MainThread)
+            foreach (var Thread in MainThread)
             {
                 Thread.Abort();
             }
@@ -105,7 +117,7 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
 
         public static string GetHTML(string Url)
         {
-            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
+            HttpWebRequest myRequest = (HttpWebRequest) WebRequest.Create(Url);
             WebHeaderCollection getHeaders = myRequest.Headers;
             myRequest.Method = "GET";
             WebResponse myResponse = myRequest.GetResponse();
@@ -116,25 +128,26 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
             return HTML;
         }
 
-        public static bool Exists(string Username)
+        public static void MainMethod(int ThreadIndex, ListView MyList, string CheckType)
         {
-            try
+            switch (CheckType)
             {
-                if (GetHTML("https://instagram.com/" + Username).Contains(Username))
-                    return true;
-                else
-                    return false;
-            }
-            catch { return false; }
-        }
-
-        public static void MainMethod(int ThreadIndex, ListView MyList)
-        {
-            for (int i = ThreadStart[ThreadIndex - 1]; i < ThreadEnd[ThreadIndex - 1]; i++)
-            {
-                bool isExisting = Exists(Usernames[i]);
-                if (!isExisting)
-                    AddAvailable(Usernames[i], MyList);
+                case "Twitter":
+                    for (var i = ThreadStart[ThreadIndex - 1]; i < ThreadEnd[ThreadIndex - 1]; i++)
+                    {
+                        var isExisting = Twitter.Exists(Usernames[i]);
+                        if (!isExisting)
+                            AddAvailable(Usernames[i], MyList);
+                    }
+                    break;
+                case "Instagram":
+                    for (var i = ThreadStart[ThreadIndex - 1]; i < ThreadEnd[ThreadIndex - 1]; i++)
+                    {
+                        var isExisting = Instagram.Exists(Usernames[i]);
+                        if (!isExisting)
+                            AddAvailable(Usernames[i], MyList);
+                    }
+                    break;
             }
         }
 
@@ -142,13 +155,10 @@ namespace InstaCheck //Created by Multibyte --- Hackforums.net
         {
             string[] Row = { Username, "Available" };
             var Item = new ListViewItem(Row);
-            if (!WorkingUsernames.Contains(Username))
-            {
-                WorkingUsernames.Add(Username);
-                MyList.Items.Add(Item);
-            }
+            if (WorkingUsernames.Contains(Username)) return;
+            WorkingUsernames.Add(Username);
+            MyList.Items.Add(Item);
         }
-
         private void btnExport_Click(object sender, EventArgs e)
         {
             using (var MyStream = new StreamWriter(Application.StartupPath + "/Usernames.txt"))
