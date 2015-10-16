@@ -1,9 +1,0 @@
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\bin\Debug\InstaCheck.exe.config
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\bin\Debug\InstaCheck.exe
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\bin\Debug\InstaCheck.pdb
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.csprojResolveAssemblyReference.cache
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.frmMain.resources
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.Properties.Resources.resources
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.csproj.GenerateResource.Cache
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.exe
-C:\Users\BobbyJ\Documents\Visual Studio 2013\Projects\InstaCheck\InstaCheck\obj\Debug\InstaCheck.pdb
