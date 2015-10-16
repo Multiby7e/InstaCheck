@@ -1,0 +1,10 @@
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\bin\Debug\InstaCheck.exe.config
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\bin\Debug\InstaCheck.exe
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\bin\Debug\InstaCheck.pdb
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.csprojResolveAssemblyReference.cache
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.frmMain.resources
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.Properties.Resources.resources
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.csproj.GenerateResource.Cache
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.exe
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.pdb
+C:\Users\User\Source\Repos\InstaCheck\InstaCheck\obj\Debug\InstaCheck.Form1.resources

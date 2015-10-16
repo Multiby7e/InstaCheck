@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chk_inst = new AetherCheckBox();
+            this.chk_twi = new AetherCheckBox();
             this.tabMain.SuspendLayout();
             this.tabUsernames.SuspendLayout();
             this.menuSettings.SuspendLayout();
@@ -57,11 +59,10 @@
             // 
             this.tabMain.Controls.Add(this.tabUsernames);
             this.tabMain.Controls.Add(this.tabCredits);
-            this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMain.Location = new System.Drawing.Point(0, 0);
+            this.tabMain.Location = new System.Drawing.Point(0, 37);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(374, 192);
+            this.tabMain.Size = new System.Drawing.Size(382, 209);
             this.tabMain.TabIndex = 32;
             // 
             // tabUsernames
@@ -70,7 +71,7 @@
             this.tabUsernames.Location = new System.Drawing.Point(4, 22);
             this.tabUsernames.Name = "tabUsernames";
             this.tabUsernames.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUsernames.Size = new System.Drawing.Size(366, 166);
+            this.tabUsernames.Size = new System.Drawing.Size(374, 183);
             this.tabUsernames.TabIndex = 0;
             this.tabUsernames.Text = "Usernames";
             this.tabUsernames.UseVisualStyleBackColor = true;
@@ -90,7 +91,7 @@
             this.listUsernames.GridLines = true;
             this.listUsernames.Location = new System.Drawing.Point(3, 3);
             this.listUsernames.Name = "listUsernames";
-            this.listUsernames.Size = new System.Drawing.Size(360, 160);
+            this.listUsernames.Size = new System.Drawing.Size(368, 177);
             this.listUsernames.TabIndex = 32;
             this.listUsernames.UseCompatibleStateImageBehavior = false;
             this.listUsernames.View = System.Windows.Forms.View.Details;
@@ -157,7 +158,7 @@
             this.tabCredits.Controls.Add(this.label1);
             this.tabCredits.Location = new System.Drawing.Point(4, 22);
             this.tabCredits.Name = "tabCredits";
-            this.tabCredits.Size = new System.Drawing.Size(366, 166);
+            this.tabCredits.Size = new System.Drawing.Size(374, 149);
             this.tabCredits.TabIndex = 2;
             this.tabCredits.Text = "Credits";
             this.tabCredits.UseVisualStyleBackColor = true;
@@ -186,9 +187,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 170);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 249);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(374, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(382, 22);
             this.statusStrip1.TabIndex = 33;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -198,11 +199,35 @@
             this.lblStatus.Size = new System.Drawing.Size(57, 17);
             this.lblStatus.Text = "Waiting...";
             // 
+            // chk_inst
+            // 
+            this.chk_inst.Checked = false;
+            this.chk_inst.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chk_inst.EnabledCalc = true;
+            this.chk_inst.Location = new System.Drawing.Point(85, 12);
+            this.chk_inst.Name = "chk_inst";
+            this.chk_inst.Size = new System.Drawing.Size(75, 19);
+            this.chk_inst.TabIndex = 35;
+            this.chk_inst.Text = "Instagram";
+            // 
+            // chk_twi
+            // 
+            this.chk_twi.Checked = false;
+            this.chk_twi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chk_twi.EnabledCalc = true;
+            this.chk_twi.Location = new System.Drawing.Point(4, 12);
+            this.chk_twi.Name = "chk_twi";
+            this.chk_twi.Size = new System.Drawing.Size(75, 19);
+            this.chk_twi.TabIndex = 34;
+            this.chk_twi.Text = "Twitter";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 192);
+            this.ClientSize = new System.Drawing.Size(382, 271);
+            this.Controls.Add(this.chk_inst);
+            this.Controls.Add(this.chk_twi);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -241,6 +266,8 @@
         internal System.Windows.Forms.ListView listUsernames;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private AetherCheckBox chk_twi;
+        private AetherCheckBox chk_inst;
     }
 }
 
